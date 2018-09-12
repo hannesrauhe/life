@@ -73,8 +73,8 @@ public:
       const auto r = r_it.first;
       for(auto& c : r_it.second)
       {
-	auto n = countNeighbors(r,c);
-        if(n==2 || n==4) next_alive_[r].insert(c);
+        auto n = countNeighbors(r,c);
+        if(n==2 || n==3) next_alive_[r].insert(c);
       }
     }
 
@@ -84,6 +84,7 @@ public:
       for(auto& c : r_it.second)
       {
 	auto n = countNeighborsOfDead(r,c);
+//        std::cout<<r<<"."<<c<<" -> "<<n<<std::endl;
         if(n==3) next_alive_[r].insert(c);
       }
     }
@@ -173,7 +174,7 @@ int main(int argc, char** argv)
   {
     g.printField();
     g.step();
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
   return 0;
 }
